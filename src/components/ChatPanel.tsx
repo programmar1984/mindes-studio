@@ -6,12 +6,13 @@ const ChatPanel = () => {
   const [messages, setMessages] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
+  
   const handleSend = async () => {
     if (!userInput.trim()) return;
     setLoading(true);
-
+    const apiHost = "http://localhost:5000";
     try {
-      const response = await axios.post('/api/ask-gpt', {
+      const response = await axios.post(apiHost + '/api/ask-gpt', {
         message: userInput
       });
 
